@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <resources>
+        <string-array name="IntervalList">
+            <item >Daily</item>
+            <item >Monthly</item>
+            <item >Annually</item>
+        </string-array>
+        <string-array name="CrimeType">
+            <item >Theft</item>
+            <item >Sexual Assault</item>
+            <item >Homicide</item>
+            <item >Burglary</item>
+        </string-array>
+        <string-array name="DepartmentList">
+            <item >Police</item>
+            <item >Fire Station</item>
+            <item >Hospital</item>
+        </string-array>
+        <string-array name="MetroStations">
+            <item >MetroStations</item>
+        </string-array>
+    </resources>

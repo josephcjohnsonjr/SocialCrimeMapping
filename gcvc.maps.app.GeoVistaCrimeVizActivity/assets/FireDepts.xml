@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FireDepts>
+    
+    <FireDept status = "active">
+        <Address>
+            5880 Woodway, 77057
+        </Address>
+        
+        <Units>
+            Engine, Ambulance, Cascade Unit
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            3735 W. Alabama, 77027
+        </Address>
+        
+        <Units>
+            Engine, Squad
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            6530 W. Little York, 77088
+        </Address>
+        
+        <Units>
+            Engine, Ladder, Ambulance, District Chief
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            2020 Hollister, 77080
+        </Address>
+        
+        <Units>
+            Engine, District Chief
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            3402 Washington, 77007
+        </Address>
+        
+        <Units>
+            Engine, Tower, Squad, District Chief
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            1402 Elgin, 77004
+        </Address>
+        
+        <Units>
+            Engine, Ladder, Squad
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            1919 Louisiana , 77002
+        </Address>
+        
+        <Units>
+            2 Engines, 2 Ambulances, Shift Commander, Command Van, District Chief
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            702 Hogan, 77009
+        </Address>
+        
+        <Units>
+            Engine, Ambulance, Squad
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            6600 Corporate, 77036
+        </Address>
+        
+        <Units>
+            Engine, Ambulance, Medic, Technical Rescue, Rescue Boat
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            460 T.C. Jester, 77008
+        </Address>
+        
+        <Units>
+            Engine, Ambulance, Squad, Ambulance Supervisor, Evacuation Boat, Rescue Boat, District Chief, Technical Rescue, Technical Rescue Trailer
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            1502 Alber, 77009
+        </Address>
+        
+        <Units>
+            Engine, Ambulance
+        </Units>
+    </FireDept>
+    
+    <FireDept status = "active">
+        <Address>
+            2215 W. 43rd, 77018
+        </Address>
+        
+        <Units>
+            Engine, Ambulance
+        </Units>
+    </FireDept>
+    
+    
+</FireDepts>

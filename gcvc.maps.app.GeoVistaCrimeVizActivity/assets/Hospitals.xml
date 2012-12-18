@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Hospitals>
+    
+    <Hospital Name = "Christus St. Joseph Hospital">
+        
+        <Address>1919 LaBranch Houston,TX 77002</Address>
+        <Contact> (713) 757-1000 </Contact>
+        
+     </Hospital>
+    
+    <Hospital Name = "Bayshore Medical Center">
+        
+        <Address>4000 Spencer Highway Pasadena, TX 77504</Address>
+        <Contact> (713) 359-2000 </Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "East Houston Regional Medical Center">
+        
+        <Address>13111 East Freeway Houston, TX 77015</Address>
+        <Contact> (713) 455-6911 </Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Kingwood Medical Center">
+        <Address>22999 U.S. Hwy. 59 Houston, TX 77339</Address> 
+        <Contact> (281) 359-7500 </Contact>
+    </Hospital>
+    
+    <Hospital Name = "Spring Branch Medical Center">
+        
+        <Address>8850 Long Point Houston, TX 77055</Address>
+        <Contact> (713) 467-6555 </Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Texas Orthopedic Hospital">
+        
+        <Address>7401 South Main Street Houston, TX 77030</Address>
+        <Contact> (713) 799-8600</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Memorial Hermann Texas Medical Center">
+        
+        <Address>6411 Fannin Street Houston, TX 77030</Address>
+        <Contact> (713) 704-4000</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Memorial Hermann Sugar Land Hospital">
+        
+        <Address>17500 W GRAND PARKWAY SOUTH SUGAR LAND, TX, 77479</Address>
+        <Contact> (281) 499-4800</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Memorial Hermann Memorial City Hospital">
+        
+        <Address>921 Gessner Rd. Houston, Texas 77024</Address>
+        <Contact> (713)-242-3000</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Memorial Hermann Southwest Hospital">
+        
+        <Address>7600 Beechnut Houston, Texas 77074</Address>
+        <Contact> 713-456-5000</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "The Methodist Hospital">
+        
+        <Address>6565 Fannin Houston, TX 77030</Address>
+        <Contact> (713) 790-3311</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Texas Children's Hospital">
+        
+        <Address>6621 Fannin Street Houston, TX 77030</Address>
+        <Contact> (713) 770-1000</Contact>
+        
+    </Hospital>
+    
+    <Hospital Name = "Michael E. DeBakey VA Medical Center">
+        
+        <Address>2002 Holcombe Blvd., Houston, TX 77030</Address>
+        <Contact> (713) 791-1414</Contact>
+        
+    </Hospital>
+    
+    
+</Hospitals>

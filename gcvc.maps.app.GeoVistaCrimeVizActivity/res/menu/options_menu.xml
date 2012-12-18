@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id = "@+id/searchDialog"
+          android:title="@string/searchBar"
+          android:showAsAction="always|withText"
+          android:actionViewClass="android.widget.SearchView"/>
+    
+    <item android:id="@+id/update"
+          android:title="@string/update"
+          android:icon="@drawable/refresh"
+          android:showAsAction="collapseActionView|ifRoom"/>
+    
+    
+        <item android:id="@+id/MapSettings"
+              android:title="Map Settings"
+              android:showAsAction="always|withText"
+              android:icon="@drawable/layers">
+              <menu>
+                <group android:checkableBehavior="single" android:id="@+id/group1">
+                	<item android:id="@+id/MapView" android:title="Map" android:checked="true" />
+                	<item android:id="@+id/SatelliteView" android:title="Satellite" android:checked="false"/>
+                	<item android:id="@+id/TrafficView" android:title="Traffic View" android:checked="false"/>
+                	<item android:id="@+id/HeatMap" android:title="Heat Map" android:checked="false"/>
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/filterSettings"
+            android:title="Incident Filter"
+            android:showAsAction="collapseActionView">        	
+            <menu>
+        	    <group android:checkableBehavior="all">
+        	        <item android:id="@+id/TrafficViolations" android:title="Traffic Violations" android:checkable="true" android:checked = "true"/>
+        	        <item android:id="@+id/Robberies" android:title="Robberies" android:checkable="true" android:checked = "true"/>
+        	        <item android:id="@+id/AggrevatedAssault" android:title="Aggrevated Assault" android:checkable="true" android:checked = "true"/>
+        	        <item android:id="@+id/SuspiciousPersons" android:title="Suspicious Persons" android:checkable="true" android:checked = "true" />
+        	    </group>
+        	    <item android:id="@+id/dateFilter" android:title="Set Time Duration"/>
+        	</menu>
+        </item>
+        <item android:id="@+id/about" android:title="About" android:showAsAction="collapseActionView">
+            <menu>
+                <item android:id="@+id/AboutPage" android:title="|About Text goes Here|"/>       
+            </menu>
+        </item>
+</menu>

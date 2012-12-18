@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PoliceDepts>
+    
+    <PoliceDept Beat = "">
+        <Address>
+            1200 Travis Street
+        </Address>
+        <Contact>
+            713 308-1200
+        </Contact>
+        <Station>
+            HPD Headquarters (Administration Building)
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "2A40">
+        <Address>
+            61 Riesner
+        </Address>
+        <Contact>
+            713 247-4400
+        </Contact>
+        <Station>
+            Central
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "1A20">
+        <Address>
+            802 Westheimer
+        </Address>
+        <Contact>
+            713 284-8604
+        </Contact>
+        <Station>
+            Near Town (Montrose)
+        </Station>
+        <HoursOfOperation>
+            6:00 AM-10:00 PM (MON-FRI)
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "2A10">
+        <Address>
+            1050 Quitman
+        </Address>
+        <Contact>
+            713 222-5196
+        </Contact>
+        <Station>
+            Ana Maria Lopez
+        </Station>
+        <HoursOfOperation>
+            9:00AM-11:00AM and 12:00PM-2:00PM (MWF)*
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "2A30">
+        <Address>
+            1127 N. Shepherd
+        </Address>
+        <Contact>
+            713 803-1151
+        </Contact>
+        <Station>
+            Heights
+        </Station>
+        <HoursOfOperation>
+            7:00 AM-4:00 PM (MON-FRI)
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "6B40">
+        <Address>
+            9455 W.Montgomery
+        </Address>
+        <Contact>
+            281 405-5300
+        </Contact>
+        <Station>
+            North
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "3B30">
+        <Address>
+            1335 West 43rd
+        </Address>
+        <Contact>
+            713 956-3140
+        </Contact>
+        <Station>
+            Near North
+        </Station>
+        <HoursOfOperation>
+            10:00 AM - 2:00 PM (MWF)
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "3B40">
+        <Address>
+            803 Crosstimbers St
+        </Address>
+        <Contact>
+            713 742-1491
+        </Contact>
+        <Station>
+            Independence Heights
+        </Station>
+        <HoursOfOperation>
+            10:00 AM - 2:00 PM (MWF)
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "5F30">
+        <Address>
+            6000 Teague
+        </Address>
+        <Contact>
+            713 744-0900
+        </Contact>
+        <Station>
+            Northwest
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "5F20">
+        <Address>
+            8400 Long Point
+        </Address>
+        <Contact>
+            832 394-0100
+        </Contact>
+        <Station>
+            Spring Branch
+        </Station>
+        <HoursOfOperation>
+            6:00 AM-4:00 PM (MON-FRI)
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "10H50">
+        <Address>
+            2202 St. Emanuel
+        </Address>
+        <Contact>
+           832 394-0200 
+        </Contact>
+        <Station>
+            South Central
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "15E30A">
+        <Address>
+            4503 Beechnut
+        </Address>
+        <Contact>
+            713 314-3900
+        </Contact>
+        <Station>
+            Southwest
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "15E20A">
+        <Address>
+            5600 S Willow Dr.
+        </Address>
+        <Contact>
+            713 726-7126
+        </Contact>
+        <Station>
+            Westbury
+        </Station>
+        <HoursOfOperation>
+            10:00 AM-5:00 PM (MON-FRI)
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "17E40A">
+        <Address>
+            8605 Westplace Dr.
+        </Address>
+        <Contact>
+            832 394-4700
+        </Contact>
+        <Station>
+            South Gessner Division
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "21I20">
+        <Address>
+            3100 N. Terminal Rd.
+        </Address>
+        <Contact>
+            281 230-6800
+        </Contact>
+        <Station>
+            Airport - IAH
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "23J20">
+        <Address>
+            7800 Airport
+        </Address>
+        <Contact>
+            713 845-6800
+        </Contact>
+        <Station>
+            Airport - HOU
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+    <PoliceDept Beat = "20G30">
+        <Address>
+            3203 S. Dairy Ashford
+        </Address>
+        <Contact>
+            281 584-4700
+        </Contact>
+        <Station>
+            Westside
+        </Station>
+        <HoursOfOperation>
+            OPEN 24 HOURS
+        </HoursOfOperation>
+    </PoliceDept>
+    
+</PoliceDepts>

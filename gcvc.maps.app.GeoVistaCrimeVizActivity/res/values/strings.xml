@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Social Crime Mapping</string>
+    <string name="searchBar">Search Map</string>
+    <string name="update">Update</string>
+    <string name="LocationError"> Cannot determine Location</string>
+    <string name = "incidentLayers">Incident Layers</string>
+    <string name="setMapView">setMapView</string>
+    <string name ="setSatelliteView">setSatelliteView</string>
+    <string name="setTrafficView">setTrafficView</string>
+    <string name="About">This software was developed by\n researchers listed below at the University\n of Houston - Downtown. The data collected by this application belong\n to local Police Departments that post data to Twitter. \n\tDeveloped By: Deary Hudson and Kevin Nguen</string>
+
+</resources>
