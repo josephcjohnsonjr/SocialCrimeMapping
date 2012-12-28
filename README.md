@@ -1,7 +1,7 @@
 Social Crime Mapping
 Developed by  Deary Hudson
-University of Houston - Downtown
 ==================
+University of Houston - Downtown
 
 Android Stand-alone Application
 Uses Twitter APIs, Google Geocoding, and Places API
