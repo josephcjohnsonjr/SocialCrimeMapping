@@ -1,6 +1,7 @@
 Social Crime Mapping
-Developed by  Deary Hudson
 ==================
+Developed by  Deary Hudson
+
 University of Houston - Downtown
 
 Android Stand-alone Application
