@@ -1,6 +1,8 @@
 package gcvc.maps.app;
 
+import java.util.Calendar;
 import java.util.LinkedList;
+import java.util.TimeZone;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -24,9 +26,12 @@ public class DBAdapter {
 	public static final String KEY_LONGITUDE = "longitude";
 	private static final String TAG = "DBAdapter";
 	
-	private static final String DATABASE_NAME = "CrimesDB";
-	private static final String DATABASE_TABLE = "crimes";
+	private static final String DATABASE_NAME = "SCMDATABASE";
+	private static final String DATABASE_TABLE = "INCIDENTS";
 	private static final int DATABASE_VERSION = 2;
+	
+	private static final String DATE_DATABASE = "DATE_DB";
+	private static final String DATE_DBTABLE = "DATE";
 	//---------------------------------------------
 	
 	
@@ -36,8 +41,10 @@ public class DBAdapter {
 	
 	
 	//----------------------------------------SQL commands to create Tables on the applications first time use------------------------------
-	private static final String DATABASE_CREATE = " create table if not exists crimes (id integer primary key " +
+	private static final String DATABASE_CREATE = " create table if not exists SCMDATABASE (id integer primary key " +
 			"autoincrement, "+ "incident VARCHAR not null, time_added time, date date, time time, address VARCHAR, latitude FLOAT, longitude FLOAT);";
+	
+	private static final String DATE_CREATE = "create table if not exists DATE (DATE date)";
 	
 	private static final String DATABASE_CREATE_HOSPITALS = "create table if not exists hospitals (id integer primary key autoincrement, hospital_name VARCHAR not null, timestamp time, address VARCHAR, latitude FLOAT, longitude FLOAT);" ;
 	
@@ -46,19 +53,19 @@ public class DBAdapter {
 	private static final String DATABASE_CREATE_FIREDEPT = "create table if not exists firedept (id integer primary key autoincrement, dept_name VARCHAR not null, timestamp time, address VARCHAR, latitude FLOAT, longitude FLOAT);" ;
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	
-	
+	public String todaysdate;
 	
 	private final Context context;
 	
-	private DatabaseHelper DBHelper;
-	private SQLiteDatabase db;
+	public DatabaseHelper DBHelper;
+	public SQLiteDatabase db;
 	
 	public DBAdapter(Context context) {
 		this.context = context;
 		DBHelper = new DatabaseHelper(context);
 	}
 	
-	class DatabaseHelper extends SQLiteOpenHelper
+	public class DatabaseHelper extends SQLiteOpenHelper
 	{
 		public DatabaseHelper(Context context){
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -67,15 +74,22 @@ public class DBAdapter {
 		public void onCreate(SQLiteDatabase db)
 		{
 			try{
+				
 				Log.d(TAG,  "onCreate with SQL Command" + DATABASE_CREATE);
+				
 				db.execSQL(DATABASE_CREATE);
+				db.execSQL(DATE_CREATE);
+				Calendar date = Calendar.getInstance();
+				int month = date.get(date.MONTH);
+				int year = date.get(date.YEAR);
+				int day = date.get(date.DAY_OF_MONTH);
+				todaysdate = month + "/" + day + "/" + year;
+				db.execSQL("INSERT INTO DATE(DATE) VALUES("+todaysdate+");");
+				
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
 		
 		
 		@Override
@@ -181,6 +195,12 @@ public class DBAdapter {
 			args.put(KEY_LONGITUDE, latitude);
 			return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
 		}
+		public String getDate(){
+			Cursor timeData = getReadableDatabase().rawQuery("SELECT * FROM DATE", null);
+			String date = timeData.getString(timeData.getColumnIndex("DATE"));
+			return date;
+		}
+		
 	}
-
+	
 }

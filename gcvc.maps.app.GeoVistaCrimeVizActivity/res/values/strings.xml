@@ -10,5 +10,8 @@
     <string name ="setSatelliteView">setSatelliteView</string>
     <string name="setTrafficView">setTrafficView</string>
     <string name="About">This software was developed by\n researchers listed below at the University\n of Houston - Downtown. The data collected by this application belong\n to local Police Departments that post data to Twitter. \n\tDeveloped By: Deary Hudson and Kevin Nguen</string>
-
+	<string name = "DateFilter">Please select a Start Date and End Date</string>
+	<string name = "NetworkInfo">Because we were unable to determine a persistent network connection, you are operating in Offline mode. You are able to view data stored on the local database. Press "OK" to continue</string>
+	<string name = "NetworkModerator">Warning: Network Connection</string>
+	<string name = "OK_Button">OK</string>
 </resources>

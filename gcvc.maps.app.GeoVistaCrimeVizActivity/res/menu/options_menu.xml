@@ -15,7 +15,7 @@
     
         <item android:id="@+id/MapSettings"
               android:title="Map Settings"
-              android:showAsAction="always|withText"
+              android:showAsAction="ifRoom|withText"
               android:icon="@drawable/layers">
               <menu>
                 <group android:checkableBehavior="single" android:id="@+id/group1">
@@ -32,12 +32,15 @@
             android:showAsAction="collapseActionView">        	
             <menu>
         	    <group android:checkableBehavior="all">
-        	        <item android:id="@+id/TrafficViolations" android:title="Traffic Violations" android:checkable="true" android:checked = "true"/>
-        	        <item android:id="@+id/Robberies" android:title="Robberies" android:checkable="true" android:checked = "true"/>
-        	        <item android:id="@+id/AggrevatedAssault" android:title="Aggrevated Assault" android:checkable="true" android:checked = "true"/>
-        	        <item android:id="@+id/SuspiciousPersons" android:title="Suspicious Persons" android:checkable="true" android:checked = "true" />
+        	        <item android:id="@+id/AggrevatedAssault_Item" android:title="Aggrevated Assault" android:checkable="true" android:checked = "true"/>
+        	        <item android:id="@+id/Arson_Item" android:title="Arson" android:checkable="true" android:checked = "true"/>
+        	        <item android:id="@+id/DisturbingThePeace_Item" android:title="Disturbing The Peace" android:checkable="true" android:checked = "true"/>
+        	        <item android:id="@+id/Homicide_Item" android:title="Homicide" android:checkable="true" android:checked = "true" />
+        	        <item android:id="@+id/Robbery_Item" android:title="Robbery" android:checkable="true" android:checked = "true" />
+        	        <item android:id="@+id/Theft_Item" android:title="Theft" android:checkable="true" android:checked = "true" />
+        	        <item android:id="@+id/TrafficAccident_Item" android:title="Traffic Accident" android:checkable="true" android:checked = "true" />
         	    </group>
-        	    <item android:id="@+id/dateFilter" android:title="Set Time Duration"/>
+        	    <item android:id="@+id/DateFilter_Item" android:title="Set Time Duration"/>
         	</menu>
         </item>
         <item android:id="@+id/about" android:title="About" android:showAsAction="collapseActionView">

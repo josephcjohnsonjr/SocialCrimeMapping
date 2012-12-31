@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 //-------All Crime identification terms are stored in a seperate file called "Keywords.java"
 public class ParsingEngine {
 	private final String REGEX_ADDRESS = "(\\w{1,8}? \\w{1,3}? \\w{1,3} \\w{1,9} \\w{2})";
-	private final String REGEX_DATE  ="(\\d{1,2}/\\d{1,2}/\\d{4}?)";
+	private final String REGEX_DATE  = "(\\d{1,2}/\\d{1,2}/\\d{4}?)";
 	private final String REGEX_TIME = "\\d{1,2}:\\d{1,2}\\s?(AM|PM)?";
 	
 
@@ -24,7 +24,7 @@ public class ParsingEngine {
 		
 		TWEET_CRIME = crimeType;
 		
-		return "Some Crime Type";///***Come Back Here***
+		return "Some Crime Type";
 	}
 	
 	private String IdentifyDate(){			//identifies the date the tweet was reported

@@ -1,9 +1,6 @@
 package gcvc.maps.app;
 
-
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,30 +8,29 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.apache.http.client.methods.HttpGet;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
+import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+
+
+
 
 public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivity {
     /** Called when the activity is first created. */
@@ -49,8 +45,9 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
 		StringTokenizer t;
 	}
 	
-	
-	
+	//-----Special variable, used to query the state of the user's Internet connection
+	public static ConnectivityManager networkConnection;
+	//----
 	
 	private String geoURL = "http://maps.googleapis.com/maps/api/geocode/xml?address=";
 	private String zip ="";
@@ -63,51 +60,29 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
 	private MyLocationOverlay myLocationOverlay;
 
     
-    private ItemizedOverlays HospitalLocations;
-    private ItemizedOverlays PoliceDepartmentLocations;
-    private ItemizedOverlays FireDepartmentLocations;
     
-    
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
+    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        
-        
-//        Button b = (Button)findViewById(R.id.buttonGoTo);
-        
-        
-//        WifiManager wifimanager;
-//        if(wifimanager.getWifiState() == wifimanager.WIFI_STATE_DISABLED){
-//        	Toast.makeText(this, R.string.Wifi_State, Toast.LENGTH_LONG).show();	
+//        networkConnection = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo networkInfo = networkConnection.getActiveNetworkInfo();
+//        if(!networkInfo.isConnected()){
+//        	networkInfo.getState().toString();
+//        	AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+//        						alertBuilder.setMessage(R.string.NetworkInfo);
+//        						alertBuilder.setTitle(R.string.NetworkModerator);
+//        						alertBuilder.setPositiveButton(R.string.OK_Button, new DialogInterface.OnClickListener(){
+//        					           public void onClick(DialogInterface dialog, int id) {
+//        					               dialog.dismiss();
+//        					           }
+//        					       });
+//        	AlertDialog alertDialog = alertBuilder.create();
+//        	alertDialog.show();
 //        }
-        
-        
-//*******************************User Interface Component*********************************************************************        
-
-    	//Spinner crimeList = (Spinner) findViewById(R.id.crimeList);
-    	//ArrayAdapter<CharSequence> crimeAdapter = ArrayAdapter.createFromResource(this, R.array.CrimeType, android.R.layout.simple_spinner_item);    	
-    	//crimeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);    	
-    	//crimeList.setAdapter((SpinnerAdapter)crimeAdapter);
-    	
-    	
-    	
-    	//Spinner departmentList = (Spinner) findViewById(R.id.DepartmentList);
-    	//ArrayAdapter<CharSequence> departmentAdapter = ArrayAdapter.createFromResource(this, R.array.DepartmentList, android.R.layout.simple_spinner_item);
-    	//departmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    	//departmentList.setAdapter((SpinnerAdapter)departmentAdapter);
-    	
-    	
-    	
-    	
-    	//Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
-    	//ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.MetroStations, android.R.layout.simple_spinner_item);
-    	//spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    	//spinner3.setAdapter((SpinnerAdapter)spinnerAdapter);   	
-    	
-    	
-//***********************************User Interface Components********************************************************************
-    	
+            	
        mapV = (MapView) findViewById(R.id.mapview);
        mapV.displayZoomControls(true);
        mapV.setBuiltInZoomControls(true);
@@ -118,40 +93,25 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
        mapV.getOverlays().add(myLocationOverlay);
        zoomToMyLocation();
        
-       GeoPoint p = new GeoPoint((int) (47.5448481 * 1E6), (int) (-122.2744919 * 1E6));
-       GeoPoint pt = new GeoPoint((int) (139.4987270 * 1E6), (int) (-85.4445080 * 1E6));
+       GeoPoint p = new GeoPoint((int) (50.5448481 * 1E6), (int) (-130.2744919 * 1E6));
        mapV.getController().animateTo(p);
        mapV.getController().setZoom(12);
        
        List<Overlay> mapOverlays = mapV.getOverlays();
-       Drawable drawable = this.getResources().getDrawable(R.drawable.arson);
+       Drawable drawable = this.getResources().getDrawable(R.drawable.theft);
+       
        
        ItemizedOverlays itemizedoverlay = new ItemizedOverlays(drawable, this);
    	   
        OverlayItem overlayitem = new OverlayItem(p, "Account: @SeattlePDO1", "Feed: SHOPLIFT - THEFT at 23XX BLOCK OF RAINIER AVE S reported on 10/30/2012 5:54 PM");
        
-       OverlayItem overlay = new OverlayItem(pt, "Second point","");
+       
        
        itemizedoverlay.addOverlay(overlayitem);
-       itemizedoverlay.addOverlay(overlay);
        
        mapOverlays.add(itemizedoverlay);
-       
-//       PostHospitals HospitalLocation_Thread = new PostHospitals(this);
-//       HospitalLocation_Thread.execute("");
-//       HospitalLocations = HospitalLocation_Thread.ReturnOverlay();
-//       mapOverlays.add(HospitalLocations);
-       
-//       PostFireDepartments FireDepartmentLocation_Thread = new PostFireDepartments(this);
-//       FireDepartmentLocation_Thread.execute("");
-//       FireDepartmentLocations = FireDepartmentLocation_Thread.GetOverlay();
-//       mapOverlays.add(FireDepartmentLocations);
-       
-//       PostPoliceDepartments PoliceDepartmentLocation_Thread = new PostPoliceDepartments(this);
-//       PoliceDepartmentLocation_Thread.execute("");
-//       PoliceDepartmentLocations = PoliceDepartmentLocation_Thread.GetOverlay();
-//       mapOverlays.add(PoliceDepartmentLocations);
 
+       
     }
 
     @Override
@@ -186,12 +146,12 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
 	}	
 	
 @Override
-protected void onDestroy(){
+	protected void onDestroy(){
 	super.onDestroy();
 }
 	
 @Override
-protected boolean isRouteDisplayed(){
+	protected boolean isRouteDisplayed(){
 	return false;
 }
 
@@ -229,26 +189,45 @@ protected boolean isRouteDisplayed(){
     		
     		
     	//--------------Handles events for items in "Incident Filter" menu-----------------------
-    	case R.id.TrafficViolations:
+    	case R.id.AggrevatedAssault_Item:
     		if(item.isChecked())
     			item.setChecked(false);
     		else
     			item.setChecked(true);
-    	case R.id.Robberies:
+    	case R.id.Arson_Item:
     		if(item.isChecked())
     			item.setChecked(false);
     		else
     			item.setChecked(true);
-    	case R.id.AggrevatedAssault:
+    	case R.id.DisturbingThePeace_Item:
     		if(item.isChecked())
     			item.setChecked(false);
     		else
     			item.setChecked(true);
-    	case R.id.SuspiciousPersons:
+    	case R.id.Homicide_Item:
     		if(item.isChecked())
     			item.setChecked(false);
     		else
-    			item.setChecked(true);			//Eventually add in variable to change the query to the database
+    			item.setChecked(true);
+    	case R.id.Robbery_Item:
+    		if(item.isChecked())
+    			item.setChecked(false);
+    		else
+    			item.setChecked(true);
+    	case R.id.Theft_Item:
+    		if(item.isChecked())
+    			item.setChecked(false);
+    		else
+    			item.setChecked(true);
+    	case R.id.TrafficAccident_Item:
+    		if(item.isChecked())
+    			item.setChecked(false);
+    		else
+        		item.setChecked(true);			//Eventually add in variable to change the query to the database
+    	case R.id.DateFilter_Item:
+    		showDatePickerDialog(this.findViewById(R.id.DateFilter_Item));
+    	case R.id.update:
+    		DataBaseQuery();
         //---------------------------------------------------------------------------------------
     	default:
     		return super.onOptionsItemSelected(item);
@@ -273,7 +252,44 @@ protected boolean isRouteDisplayed(){
     	
     }
     
+    public void DataBaseQuery(){
+    	GeoPoint p;
+    	double latitude;
+    	double longitude;
+    	String CrimeType;
+    	Drawable drawable = this.getResources().getDrawable(R.drawable.homicide);
+    	
+    	
+    	DataLayer d = new DataLayer(getBaseContext());
+    	d.AddIncident("SHOPLIFT - THEFT at 23XX BLOCK OF RAINIER AVE S reported on 10/30/2012 5:54 PM",
+    			"SeattlePDO1", "Seattle, Washington", "Theft", 47.5448481, -122.2744919, "Month ago", "TIME");
+    	ArrayList<QueryResults>results = d.SelectIncidents();
+    	String query = "";
+    	if(results.size() > 0)
+    			query += results.get(results.size()-1).toString() +"\n\n";
+    	CrimeType = results.get(results.size() - 1).Incident;
+    	p = new GeoPoint((int)(results.get(results.size()-1).Latitude	*1E6), (int)(results.get(results.size()-1).Longitude*1E6));
+    	
+    	if(CrimeType.equalsIgnoreCase("Theft"))
+    		drawable = this.getResources().getDrawable(R.drawable.theft);
+    	
+        ItemizedOverlays itemizedoverlay = new ItemizedOverlays(drawable, this);
+        
+        OverlayItem overlayitem = new OverlayItem(p, results.get(results.size() - 1).Username, results.get(results.size() - 1).toString());
+        
+        
+        itemizedoverlay.addOverlay(overlayitem);
+        mapV.getOverlays().add(itemizedoverlay);
+        
+    	mapV.getController().animateTo(p);
+    	Toast.makeText(this, query, Toast.LENGTH_LONG).show();
+    }
+    	
     
+    public void showDatePickerDialog(View v) {
+        DialogFragment startDate = new DatePickerFragment();
+        startDate.show(getFragmentManager(), "datePicker");
+    }
     
     
     
@@ -284,26 +300,7 @@ protected boolean isRouteDisplayed(){
  * ********************************************************************************************
  * ******************************************************************************************/
     
-//    public void ZipQuery(final View view)
-//    {    	
-//    	    	EditText editText = (EditText) findViewById(R.id.editText);
-//	        	boolean isZip = false;    	
-//	        	String zip = editText.getText().toString();
-//	        	
-//	        	if(zip.length() == 5){
-//	        		isZip = true;
-//	        	}
-//	        	
-//	        	if(isZip){
-//	        		query = geoURL + zip + sensor;
-//	        		try{
-//	        		new ZipCodeQuery().execute(query);
-//	        		}
-//	        		catch(Exception e){
-//	        			System.out.print(e.getMessage());
-//	        		}
-//	        	}
-//    }
+    
     
     private class ZipCodeQuery extends AsyncTask<String, Void, String> {
 		/** The system calls this to perform work in a worker thread and
@@ -312,6 +309,7 @@ protected boolean isRouteDisplayed(){
     	
     	GeoPoint positioning = null;
 		
+		@Override
 		protected String doInBackground(String... urls) {
 			String response = "";
 			try{
@@ -368,9 +366,14 @@ protected boolean isRouteDisplayed(){
     	String consumer_secret = OAuthentication.ConsumerSecret;
     	String request_token_url = OAuthentication.RequestTokenURL;
     	
+    	NetworkInfo networkInfo;
+    	
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			HttpGet httpget = new HttpGet();
+			networkInfo = networkConnection.getActiveNetworkInfo();
+			if(networkInfo.isConnected()){
+				
+			}
 			
 			return null;
 		}
@@ -381,241 +384,7 @@ protected boolean isRouteDisplayed(){
     }
     
     
-    //Creates a seperate thread to Display the hospitals on the map
-    public class PostHospitals extends AsyncTask<String, Void, String> {
-		/** Creates a worker thread to parse the "Hospitals" XML file
-		 *  and displays everyone on the map view*/
-    	
-		private GeoPoint geoPoint;
-		private HospitalData hospitaldata;
-		
-		private ItemizedOverlays itemOverlays;
-		private Context mapContext;
-		
-		public PostHospitals(Context context){
-			mapContext = context;
-			hospitaldata = new HospitalData();
-			
-		}
-		protected String doInBackground(String... urls) {
-			String response = "";
-			try{
-					hospitaldata.GetHospitalData();
-					hospitaldata.parseDocument();
-					itemOverlays = hospitaldata.DisplayOnMap(mapContext);
-					
-			}
-	    	
-	            catch(Exception e){
-	            	System.out.print(e.getMessage());
-	            }
-	            
-			return response;
-		}
-
-
-		/** The system calls this to perform work in the UI thread and delivers
-		 * the result from doInBackground() */
-	
-		protected void onPostExecute(String text) {
-			
-			MapView map = (MapView) findViewById(R.id.mapview);
-		}
-		public ItemizedOverlays ReturnOverlay(){
-			return itemOverlays;
-		}
-}
-    
-    public class HospitalData extends com.google.android.maps.Overlay{
-    	private Document dom;
-
-    	
-    	private ArrayList<Hospitalinfo> hospitalList = new ArrayList<Hospitalinfo>();
-    	
-    	private String Namebuffer;
-    	private String Addressbuffer;
-    	private String Contactbuffer;
-    	private String hospitalDatabuffer;
-    	
-    	
-    	
-    	public void GetHospitalData(){
-        	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        	try{
-        		DocumentBuilder db = dbf.newDocumentBuilder();
-        		
-        		dom = db.parse(getApplicationContext().getAssets().open("Hospitals.xml"));
-        	}
-        	
-        	catch(IOException e){
-        		e.printStackTrace();
-        	} catch (ParserConfigurationException e) {
-				e.printStackTrace();
-			} catch (SAXException e) {
-				e.printStackTrace();
-			}
-        }
-    	
-    	public void parseDocument(){
-    		//get the root element
-    		
-    		Element element = dom.getDocumentElement();
-    		
-    		//get a nodelist of elements
-    		
-	    		NodeList elementList = element.getElementsByTagName("Hospital");
-	    		Hospitalinfo hospitalInformation;
-	    		if(elementList != null && elementList.getLength() > 0){
-	    			for(int i = 0; i < elementList.getLength(); i++){
-	    				
-	    				//get the Hospital Element
-	    				Element hospital = (Element)elementList.item(i);
-	    				
-	    				
-	    				Addressbuffer = getTextValue(hospital,"Address");
-	    				Contactbuffer = getTextValue(hospital,"Contact");
-	
-	    				Namebuffer = hospital.getAttribute("Name");
-	    				
-	    				hospitalDatabuffer = "Name: " + Namebuffer + "\nLocation: " + Addressbuffer
-	    								+ "\nContact: " + Contactbuffer;
-	    				
-	    				hospitalInformation = new Hospitalinfo(Addressbuffer, Contactbuffer, Namebuffer, hospitalDatabuffer);
-	    				hospitalList.add(hospitalInformation);
-	    			}
-	    		}
-    	}
-    	
-    	private String getTextValue(Element ele, String tagName) {
-    		String textVal = null;
-    		NodeList nl = ele.getElementsByTagName(tagName);
-    		if(nl != null && nl.getLength() > 0) {
-    			Element el = (Element)nl.item(0);
-    			textVal = el.getFirstChild().getNodeValue();
-    		}
-
-    		return textVal;
-    	}
-    	
-    	//Processes the hospital list and displays the hospital on the map
-
-    	public ItemizedOverlays DisplayOnMap(Context mapContext){
-    		Drawable marker = getResources().getDrawable(R.drawable.hospital);
-    		ItemizedOverlays itemOverlays = new ItemizedOverlays(marker, mapContext);
-    		
-    		String query = "";
-    		
-    		GeoPoint location;
-    		Hospitalinfo hospitalinfo;
-    		
-    		
-    	        for(int i = 0; i < hospitalList.size(); i++){
-    	        	hospitalinfo = hospitalList.get(i);
-    	        	try{
-    	        	query = "http://maps.googleapis.com/maps/api/geocode/xml?address="+ hospitalinfo.Address + "&sensor=true";
-    	        	query = query.replace(" ", "%20");
-    	        	//urlBuilder = AddressURL.matcher(query);
-    	        	//urlBuilder.replaceAll("%20");
-    	        
-    	        	
-    	        	BufferedReader in = null;
-        			URL url = new URL(query);
-        			in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-        			String fetchText = "";
-        			String XMLresponse = "";
-    			
-    			
-        			while ((fetchText = in.readLine()) != null) {
-        				XMLresponse += fetchText;
-        			}
-    			
-        			final String XML = XMLresponse;
-        			in.close();
-        			
-        			double latitude =  Double.parseDouble(XML.substring(XML.indexOf("<lat>")+5, XML.indexOf("</lat>")));
-        			double longitude = Double.parseDouble(XML.substring(XML.indexOf("<lng>")+5, XML.indexOf("</lng>")));
-    		
-        			location = new GeoPoint((int)(latitude*1E6),(int)(longitude*1E6));
-        			OverlayItem overlayitem = new OverlayItem(location, hospitalinfo.Name, hospitalinfo.hospitalData);
-        			itemOverlays.addOverlay(overlayitem);
-    	        	}catch(Exception e){
-    	        		System.out.print(e.getMessage());
-    	        	}
-    	        	
-    	        }
-    	        return itemOverlays;
-    			
-    			
-    		
-    		
-    	}
-    }
-    	
-    	
         
-    	
-    }
-    //Hospital info is a Data structure that stores information about each hospital such as (address, contact information, etc)
-    class Hospitalinfo{
-    	public String Address;
-        public String Contact;
-        public String Name;
-        public String hospitalData;
-        public float latitude;
-        public float longitude;
-        
-    	public Hospitalinfo(String address, String contact, String name, String hospitaldata){
-    		Address = address;
-    		Contact = contact;
-    		Name = name;
-    		hospitalData = hospitaldata;
-    	}
-    	public void setCoordinates(float Latitude, float Longitude){
-    		latitude = Latitude;
-    		longitude = Longitude;
-    	}
-    }
-    
-    
-    
-    //Creates a separate thread to display Police Stations on the mapview
-    class PostPoliceDepts extends AsyncTask<String, Void, String> {
-		/** Creates a worker thread to parse the "Hospitals" XML file
-		 *  and displays everyone on the map view*/
-    	
-		GeoPoint geoPoint;		//used to store the location coordinates of the Police Department
-		
-		protected String doInBackground(String... urls) {
-			String response = "";
-			try{
-				
-			}
-	    	
-	            catch(Exception e){
-	            	System.out.print(e.getMessage());
-	            }
-	            
-			return response;
-		}
-
-
-		/** The system calls this to perform work in the UI thread and delivers
-		 * the result from doInBackground() */
-	
-		protected void onPostExecute(String text) {
-			//MapView map = (MapView) findViewById(R.id.mapview);
-			//map.getController().animateTo(geoPoint);
-			
-		}
-    
-
-    
-    
-    
-    
-    
-    
     public void UpdateMapView(View view){
     	//Take all of the Spinner components and make a query based on the selected items in the Spinner Controls    	
     }
