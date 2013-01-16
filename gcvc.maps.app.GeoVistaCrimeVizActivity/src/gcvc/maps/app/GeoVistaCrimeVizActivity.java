@@ -8,10 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import android.app.AlertDialog;
 import android.app.DialogFragment;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -34,16 +32,8 @@ import com.google.android.maps.OverlayItem;
 
 public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivity {
     /** Called when the activity is first created. */
-	public class OAuthentication{
-	    public static final String ConsumerKey = "e5llIrQKB7xl3Lz8eXXig";
-	    public static final String ConsumerSecret = "SvdmQvwQspguSvwHzUaYJIl3iJ39Y8E93X5JIoAkgc";
 
-	    public static final String RequestTokenURL = "https://api.twitter.com/oauth/request_token";
-	    public static final String AuthorizeURL = "https://api.twitter.com/oauth/authorize";
-	    public static final String AccessTokenURL = "https://api.twitter.com/oauth/access_token";
-	    Scanner sc = new Scanner(System.in);
-		StringTokenizer t;
-	}
+	
 	
 	//-----Special variable, used to query the state of the user's Internet connection
 	public static ConnectivityManager networkConnection;
@@ -185,6 +175,9 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
     		//setHeatMapView()
     		item.setChecked(true);
     		break;
+    	//case R.id.about:
+    		//Intent intent = new Intent(this, welcome.class);
+    		//startActivity(intent);
     	//---------------------------------------------------------------------------------------
     		
     		
@@ -302,7 +295,7 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
     
     
     
-    private class ZipCodeQuery extends AsyncTask<String, Void, String> {
+    private class AddressQuery extends AsyncTask<String, Void, String> {
 		/** The system calls this to perform work in a worker thread and
 		 * delivers it the parameters given to AsyncTask.execute() */
     	
@@ -354,17 +347,12 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
 //		}
 }
     
-    
     /*
      * When instantiated in the main thread, this worker thread establishes a POST connection to Twitter
      * servers using HTTP GET and POST. Every response is parsed using the ParsingEngine.java class
      */
     public class TWITTERPOST extends AsyncTask<Void, Void, Void>{
-    	String access_token_url = OAuthentication.AccessTokenURL;
-    	String authorize_url = OAuthentication.AuthorizeURL;
-    	String consumerKey = OAuthentication.ConsumerKey;
-    	String consumer_secret = OAuthentication.ConsumerSecret;
-    	String request_token_url = OAuthentication.RequestTokenURL;
+    	
     	
     	NetworkInfo networkInfo;
     	
@@ -382,8 +370,6 @@ public class GeoVistaCrimeVizActivity extends com.google.android.maps.MapActivit
 			
 		}
     }
-    
-    
         
     public void UpdateMapView(View view){
     	//Take all of the Spinner components and make a query based on the selected items in the Spinner Controls    	

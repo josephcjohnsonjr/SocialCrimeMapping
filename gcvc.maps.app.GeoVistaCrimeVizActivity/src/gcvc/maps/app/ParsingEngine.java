@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 //-------All Crime identification terms are stored in a seperate file called "Keywords.java"
 public class ParsingEngine {
-	private final String REGEX_ADDRESS = "(\\w{1,8}? \\w{1,3}? \\w{1,3} \\w{1,9} \\w{2})";
+	private final String REGEX_ADDRESS = "(\\d{2}XX (\\w+ (\\w+)?)*? (S(TR?tr?\\w{3})?)";
+	private final String REGEX_ADDRESS_$ = "(at (\\w+ (\\w+)*?)*? / (\\w+ (\\w+)*)*? (ST?R?(t?r?)?(\\w{3})?))*";
 	private final String REGEX_DATE  = "(\\d{1,2}/\\d{1,2}/\\d{4}?)";
 	private final String REGEX_TIME = "\\d{1,2}:\\d{1,2}\\s?(AM|PM)?";
 	

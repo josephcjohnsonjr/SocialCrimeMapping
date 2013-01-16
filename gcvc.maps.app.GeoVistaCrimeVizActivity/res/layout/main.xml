@@ -13,6 +13,5 @@
         android:apiKey="0fiUx8GXCyqdfUdHV36yHkU5mCp7PaizCgqxeOQ"
         android:clickable="true">
     </com.google.android.maps.MapView>
-
     
 </RelativeLayout>
